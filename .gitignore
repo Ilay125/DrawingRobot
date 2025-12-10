@@ -2,3 +2,5 @@ __pycache__
 /.vscode/
 trace.svg
 trace.txt
+/build/
+/Debug/

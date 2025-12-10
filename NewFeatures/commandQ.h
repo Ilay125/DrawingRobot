@@ -8,10 +8,11 @@ class CommandQueue {
     std::queue<Command*> queue;
     int size;
 
-    CommandQueue();
-    void add_command(Command* c);
-    void parse(unsigned char data[], int size); // replace char with uint8_t
-    void draw();
+    public:
+        CommandQueue();
+        void add_command(Command* c);
+        void parse(unsigned char data[], int size); // replace char with uint8_t
+        void draw();
 
 };
 

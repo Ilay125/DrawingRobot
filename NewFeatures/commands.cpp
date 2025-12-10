@@ -1,5 +1,6 @@
 #include "commands.h"
 #include <cmath>
+#include <iostream>
 
 Move::Move(double x0, double y0) {
     this->x0 = x0;
@@ -14,6 +15,10 @@ int Move::draw() {
     // pull down
 
     return 0;
+}
+
+void Move::print_command() {
+    std::cout << "Move: (" << this->x0 << ", " << this->y0 << ")" << std::endl;
 }
 
 Line::Line(double x0, double y0, double x1, double y1) {
@@ -61,6 +66,10 @@ int Line::draw() {
     return 0;
 }
 
+void Line::print_command() {
+    std::cout << "line: (" << this->x0 << ", " << this->y0 << ") -> (" << this->x1 << ", " << this->y1 << ")" << std::endl;
+}
+
 Cubic::Cubic(double x0, double y0, double x1, double y1,
              double x2, double y2, double x3, double y3) {
     this->x0 = x0;
@@ -69,6 +78,8 @@ Cubic::Cubic(double x0, double y0, double x1, double y1,
     this->y1 = y1;
     this->x2 = x2;
     this->y2 = y2;
+    this->x3 = x3;
+    this->y3 = y3;
 }
 
 int Cubic::draw() {
@@ -112,4 +123,8 @@ int Cubic::draw() {
     // move(x_prev, y_prev) -> (x_final, y_final);
 
     return 0;
+}
+
+void Cubic::print_command() {
+    std::cout << "Cubic: p0=(" << this->x0 << ", " << this->y0 << ") p1=(" << this->x1 << ", " << this->y1 << ")" << " p2=(" << this->x2 << ", " << this->y2 << ") p3=(" << this->x3 << ", " << this->y3 << ")" << std::endl;
 }

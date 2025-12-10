@@ -6,6 +6,7 @@
 class Command {
     public:
         virtual int draw() = 0;
+        virtual void print_command() = 0;
         virtual ~Command() = default;
 };
 
@@ -16,6 +17,7 @@ class Move: public Command {
     public:
         Move(double x0, double y0);
         int draw();
+        void print_command();
 };
 
 class Line: public Command {
@@ -27,6 +29,7 @@ class Line: public Command {
     public:
         Line(double x0, double y0, double x1, double y1);
         int draw();
+        void print_command();
 };
 
 class Cubic: public Command {
@@ -43,6 +46,7 @@ class Cubic: public Command {
         Cubic(double x0, double y0, double x1, double y1,
              double x2, double y2, double x3, double y3);
         int draw();
+        void print_command();
 };
 
 #endif

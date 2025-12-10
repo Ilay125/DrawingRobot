@@ -1,5 +1,7 @@
 #include "commandQ.h"
 
+#include <iostream>
+
 CommandQueue::CommandQueue() {
     this->size = 0;
 }
@@ -14,6 +16,7 @@ void CommandQueue::draw() {
         Command* c = queue.front();
         queue.pop();
         c->draw();
+        c->print_command();
         delete c;
     }
 }
@@ -29,6 +32,11 @@ void CommandQueue::parse(unsigned char data[], int size) {
         Command* c = nullptr;
 
         switch(data[idx]) {
+            case 0: {
+                //std::cout << "success" << std::endl;
+                return;
+            }
+
             case 'M': {
                 start_x = data[idx + 1] / 10.0;
                 start_y = data[idx + 2] / 10.0;
@@ -79,6 +87,7 @@ void CommandQueue::parse(unsigned char data[], int size) {
             }
 
             default:
+                std::cout << "Unknown command: " << data[idx] << " at idx " << idx << std::endl;
                 //printf("Unknown command: %c at index %d\n", data[idx], idx);
                 return; 
 
